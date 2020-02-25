@@ -1,0 +1,19 @@
+[
+  {
+    "name": "George",
+    "comment": "I just want to leave a comment",
+    "timeStamp": "58",
+    "highlight": [{"pageX": 597, "pageY": 382}, {"pageX": 426, "pageY": 353}]
+  },
+  {
+    "name": "Isabella",
+    "comment": "What beautiful views",
+    "timeStamp": "34"
+  },
+  {
+    "name": "Sofia",
+    "comment": "That's very beautiful!",
+    "timeStamp": "15",
+    "highlight": [{"pageX": 477, "pageY": 382}]
+  }
+]
