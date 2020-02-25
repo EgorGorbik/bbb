@@ -3,7 +3,7 @@
     "name": "George",
     "comment": "I just want to leave a comment",
     "timeStamp": "58",
-    "highlight": [{"pageX": 597, "pageY": 382}, {"pageX": 426, "pageY": 353}]
+    "highlight": [{"pageX": 597, "pageY": 282}, {"pageX": 426, "pageY": 353}]
   },
   {
     "name": "Isabella",
@@ -14,6 +14,6 @@
     "name": "Sofia",
     "comment": "That's very beautiful!",
     "timeStamp": "15",
-    "highlight": [{"pageX": 477, "pageY": 382}]
+    "highlight": [{"pageX": 477, "pageY": 182}]
   }
 ]

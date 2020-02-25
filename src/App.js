@@ -9,14 +9,12 @@ import Comments from "./Components/Comments";
 function App() {
     const [ comments, changeComments ] = useState([]);
     const [ player, setPlayer ] = useState('play');
-    const [ timePassed, setTimePassed ] = useState('00:00');
+    const [ timePassed, setTimePassed ] = useState(0);
 
     const video = React.createRef();
 
     const rewindVideo = (time) => {
-        let rez = time / video.current.duration * 100;
-        console.log(rez)
-        video.current.currentTime = rez * video.current.duration / 100;
+        video.current.currentTime = time;
     }
 
     useEffect(() => {
@@ -36,8 +34,6 @@ function App() {
     }
 
     let changePlayer = () => {
-        console.log(video.current.duration)
-        console.log(video.current.currentTime)
         switch (player) {
             case 'play':
                 setPlayer('pause');

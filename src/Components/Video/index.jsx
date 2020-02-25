@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { Icon } from 'semantic-ui-react';
 import '../../styles/index.css';
-import CommentInput from "../CommentInput";
 import AvatarTimeline from "./AvatarTimeline";
 
 const Video = React.forwardRef((props, ref) => {
-
     const [ duration, setDuration ] = useState('00:00');
     const [ highlight, changeHighlight ] = useState([]);
 
@@ -21,17 +19,14 @@ const Video = React.forwardRef((props, ref) => {
     const changeDuration = (e, data) => {
         const video = document.getElementsByTagName('video')[0];
         document.getElementsByClassName('video-container')[0].innerHTML = '';
-        document.getElementsByClassName('video-container')[0].append(video)
+        document.getElementsByClassName('video-container')[0].append(video);
         if(data && data.highlight) {
             data.highlight.map(e => highlightArea(e));
             props.pausePlayer();
         }
-        console.log(e.target.id)
         let len = e.pageX - document.getElementsByClassName('barContainer')[0].offsetLeft;
-        let positionBar = document.getElementById("durationBar");
-        let rez = (len*100 / document.getElementsByClassName('barContainer')[0].offsetWidth);
-        //positionBar.style.width = rez + "%";
-        ref.current.currentTime = rez * ref.current.duration / 100;
+        let difference = (len/ document.getElementsByClassName('barContainer')[0].offsetWidth);
+        ref.current.currentTime = difference * ref.current.duration;
     }
 
     const changeTimeFormat = (seconds) => {
@@ -68,6 +63,7 @@ const Video = React.forwardRef((props, ref) => {
         area.style.bottom = bottom + '%';
         document.getElementsByClassName('video-container')[0].append(area);
     }
+    console.log(props.timePassed)
 
     return(
         <div className='video-wrapper'>
@@ -78,11 +74,15 @@ const Video = React.forwardRef((props, ref) => {
                     </video>
                 </div>
                 <div className='barContainer' onClick={(e) => changeDuration(e)}>
-                    <div id="durationBar">
-                    </div>
+                    <div id="durationBar"></div>
                 </div>
                 <div className='timeline'>
-                    {props.comments[0] && props.comments.map(e => <AvatarTimeline changeDuration={changeDuration} duration={duration} data={e}/>)}
+                    {props.comments[0] &&
+                     props.comments.map(e => <AvatarTimeline
+                         changeDuration={changeDuration}
+                         duration={duration}
+                         data={e}
+                     />)}
                 </div>
                 <div className='player_control_panel'>
                     <Icon className='icon' name={props.player} size='large' onClick={props.changePlayer}/>
